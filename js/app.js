@@ -12,16 +12,23 @@ var oldMill = {
   maxHourlyCustomers: 65, 
   averageCookieSale: 6.3,
   randomCustomerResult: 0,
+  cookiesSoldHourly: 0,
   calculateRandomNumberOfCustomers: function() {
-    var min = Math.ceil(oldMill.minHourlyCustomers);
-    var max = Math.floor(oldMill.maxHourlyCustomers);
-    this.randomCustomerResult =  Math.floor(Math.random() * (oldMill.maxHourlyCustomers - oldMill.minHourlyCustomers + 1)) + oldMill.minHourlyCustomers;
-  } 
+    var min = Math.ceil(this.minHourlyCustomers);
+    var max = Math.floor(this.maxHourlyCustomers);
+    this.randomCustomerResult =  Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers;
+  },
+  calculateCookiesSoldHourly: function() {
+    this.cookiesSoldHourly = this.averageCookieSale * this.randomCustomerResult;
+  }
 };
+
 console.log(oldMill.minHourlyCustomers);
 console.log(oldMill.maxHourlyCustomers);
 oldMill.calculateRandomNumberOfCustomers();
 console.log(oldMill.randomCustomerResult);
+oldMill.calculateCookiesSoldHourly();
+console.log(oldMill.cookiesSoldHourly);
 
 
 // var pilotButte = {
