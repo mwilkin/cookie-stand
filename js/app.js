@@ -8,7 +8,15 @@ var oldMill = {
   minHourlyCustomers: 23,
   maxHourlyCustomers: 65, 
   averageCookieSale: 6.3,
+  randomCustomers: function(){
+    
+    Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers;
+    
+  }
+  
 };
+
+
 
 // var pilotButte = {
 //   name: 'Pilot Butte',
@@ -45,20 +53,6 @@ var oldMill = {
     <ul>
       <li>6am: 16 cookies</li>
       <li>7am: 20 cookies</li>
-      <li>8am: 35 cookies</li>
-      <li>9am: 48 cookies</li>
-      <li>10am: 56 cookies</li>
-      <li>11am: 77 cookies</li>
-      <li>12pm: 93 cookies</li>
-      <li>1pm: 144 cookies</li>
-      <li>2pm: 119 cookies</li>
-      <li>3pm: 84 cookies</li>
-      <li>4pm: 61 cookies</li>
-      <li>5pm: 23 cookies</li>
-      <li>6pm: 42 cookies</li>
-      <li>7pm: 57 cookies</li>
-      <li>8pm: 29 cookies</li>
-      <li>Total: 657 cookies</li>
     </ul> 
   </article>*/
 }
@@ -78,19 +72,10 @@ article.appendChild(h2);
 var ul = document.createElement('ul');
 article.appendChild(ul);
 
+
 for(var i = 0; i < hours.length; i++){
   var li = document.createElement('li');
   li.textContent = hours[i];
   ul.appendChild(li);
+  
 }
-
-
-
-
-
-
-
-
-
-
-
