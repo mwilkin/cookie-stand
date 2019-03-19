@@ -4,9 +4,6 @@ var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 
 // ToDo: make sure to include Total after the list of hours.
 
-// var cookiesByHour = [];
-
-// totalCookiesSold =+ cookiesByHour;
 
 var oldMill = {
   name: 'Old Mill',
@@ -15,9 +12,7 @@ var oldMill = {
   averageCookieSale: 6.3,
   randomCustomerResult: [],
   cookiesSoldHourly: [],
-  cookiesByHour: [],
-  // totalCookiesSold: 0,
-  // Math.round(this.averageCookieSale * this.randomCustomerResult[i]);
+  totalCookiesSold: 0,
   calculateRandomNumberOfCustomers: function() {
     for(var i = 0; i < hours.length; i++){
       this.randomCustomerResult.push(Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers);
@@ -27,17 +22,18 @@ var oldMill = {
     this.calculateRandomNumberOfCustomers();
     for(var i = 0; i < hours.length; i++ ) {
       this.cookiesSoldHourly.push(Math.round(this.randomCustomerResult[i] * this.averageCookieSale));
+      this.totalCookiesSold += this.cookiesSoldHourly[i];
     }
   },
 };
+oldMill.calculateCookiesSoldHourly();
 
 console.log(oldMill.minHourlyCustomers);
 console.log(oldMill.maxHourlyCustomers);
-// oldMill.calculateRandomNumberOfCustomers();
 console.log(oldMill.randomCustomerResult);
-oldMill.calculateCookiesSoldHourly();
 console.log(oldMill.cookiesSoldHourly);
-console.log(oldMill.cookiesByHour); 
+console.log(oldMill.totalCookiesSold);
+
 
 
 // <article id="oldMill">
