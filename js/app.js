@@ -1,4 +1,5 @@
 'use strict';
+
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Total'];
 
 var customers = [];
@@ -8,15 +9,17 @@ var oldMill = {
   minHourlyCustomers: 23,
   maxHourlyCustomers: 65, 
   averageCookieSale: 6.3,
-  randomCustomers: function(){
-    
-    Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers;
-    
+  randomCustomers: function() {
+    var min = Math.ceil(oldMill.minHourlyCustomers);
+    var max = Math.floor(oldMill.maxHourlyCustomers);
+    var randomCustomerCalculation =  Math.floor(Math.random() * (max - min + 1)) + min;
+    return randomCustomerCalculation;
   }
   
 };
-
-
+console.log(oldMill.minHourlyCustomers);
+console.log(oldMill.maxHourlyCustomers);
+console.log(oldMill.randomCustomerCalculation);
 
 // var pilotButte = {
 //   name: 'Pilot Butte',
