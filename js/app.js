@@ -63,7 +63,7 @@ article.appendChild(ul);
 
 for(var i = 0; i < hours.length; i++){
   var li = document.createElement('li');
-  li.textContent = `${hours[i]}: 100 cookies`;
+  li.textContent = `${hours[i]}: ${oldMill.cookiesSoldHourly[i]} cookies`;
   ul.appendChild(li);
   
 }
