@@ -65,8 +65,11 @@ for(var i = 0; i < hours.length; i++){
   var li = document.createElement('li');
   li.textContent = `${hours[i]}: ${oldMill.cookiesSoldHourly[i]} cookies`;
   ul.appendChild(li);
-  
 }
+
+var li = document.createElement('li');
+li.textContent = `Total cookies sold for the day: ${oldMill.totalCookiesSold}`;
+ul.appendChild(li);
 
 
 // var pilotButte = {
