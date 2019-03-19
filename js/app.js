@@ -1,6 +1,8 @@
 'use strict';
 
-var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Total'];
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+
+// ToDo: make sure to include Total after the list of hours.
 
 var customers = [];
 
@@ -9,17 +11,18 @@ var oldMill = {
   minHourlyCustomers: 23,
   maxHourlyCustomers: 65, 
   averageCookieSale: 6.3,
-  randomCustomers: function() {
+  randomCustomerResult: 0,
+  calculateRandomNumberOfCustomers: function() {
     var min = Math.ceil(oldMill.minHourlyCustomers);
     var max = Math.floor(oldMill.maxHourlyCustomers);
-    var randomCustomerCalculation =  Math.floor(Math.random() * (max - min + 1)) + min;
-    return randomCustomerCalculation;
-  }
-  
+    this.randomCustomerResult =  Math.floor(Math.random() * (oldMill.maxHourlyCustomers - oldMill.minHourlyCustomers + 1)) + oldMill.minHourlyCustomers;
+  } 
 };
 console.log(oldMill.minHourlyCustomers);
 console.log(oldMill.maxHourlyCustomers);
-console.log(oldMill.randomCustomerCalculation);
+oldMill.calculateRandomNumberOfCustomers();
+console.log(oldMill.randomCustomerResult);
+
 
 // var pilotButte = {
 //   name: 'Pilot Butte',
@@ -60,12 +63,13 @@ console.log(oldMill.randomCustomerCalculation);
   </article>*/
 }
 
-var shopLocationListElement = 
-document.getElementById('shopLocationList');
+var shopLocationListElement = document.getElementById('shopLocationList');
 console.log(shopLocationListElement);
 
+var oldMillId = oldMill.name.toLowerCase().replace(' m','M')
+
 var article = document.createElement('article');
-article.setAttribute('id', `${oldMill.name.toLowerCase()}`);
+article.setAttribute('id', `${oldMillId}`);
 shopLocationListElement.appendChild(article);
 
 var h2 = document.createElement('h2');
@@ -75,10 +79,8 @@ article.appendChild(h2);
 var ul = document.createElement('ul');
 article.appendChild(ul);
 
-
 for(var i = 0; i < hours.length; i++){
   var li = document.createElement('li');
-  li.textContent = hours[i];
-  ul.appendChild(li);
-  
+  li.textContent = `${hours[i]}: 16 cookies`;
+  ul.appendChild(li); 
 }
