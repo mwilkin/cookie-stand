@@ -19,7 +19,7 @@ var oldMill = {
     this.randomCustomerResult =  Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers;
   },
   calculateCookiesSoldHourly: function() {
-    this.cookiesSoldHourly = this.averageCookieSale * this.randomCustomerResult;
+    this.cookiesSoldHourly = Math.round(this.averageCookieSale * this.randomCustomerResult);
   }
 };
 
@@ -86,8 +86,10 @@ article.appendChild(h2);
 var ul = document.createElement('ul');
 article.appendChild(ul);
 
+
+
 for(var i = 0; i < hours.length; i++){
   var li = document.createElement('li');
-  li.textContent = `${hours[i]}: 16 cookies`;
+  li.textContent = `${hours[i]}: ${oldMill.cookiesSoldHourly} cookies`;
   ul.appendChild(li); 
 }
