@@ -11,7 +11,7 @@
 // ---------------
 var renderShop = function(parentElement){
   var article = document.createElement('article');
-  article.setAttribute('id', `${this.name.toLowercase()}`);
+  article.setAttribute('id', `${this.name.toLowerCase().replace(' ', '_')}`);
   parentElement.appendChild(article);
 
   var h2 = document.createElement('h2');
@@ -74,6 +74,8 @@ var shopLocationListElement = document.getElementById('shopLocationList');
 console.log(shopLocationListElement);
 
 var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3, [], [], 0);
+// oldMill.renderShop();
+
 
 var pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7, [], [], 0);
 
