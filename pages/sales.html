@@ -16,32 +16,33 @@
       <section>
         <a href="../index.html">Public Page</a>
       </section>
-      <!-- <section>
+      <section id="form">
         <fieldset>
           <legend>
             Cookie Shop Sales Information
           </legend>
           <label for="">Shop Name
-            <input type="text" name="name" id="">
+            <input type="text" name="name" required>
           </label>
           <br/>
           <label for="">Minimum Number of Customers per day
-            <input type="number" name="minHourlyCustomers" id="">
+            <input type="number" name="minHourlyCustomers" required>
           </label>
           <br/>
           <label for="">Maximum Number of Customers per day
-            <input type="number" name="maxHourlyCustomers" id="">
+            <input type="number" name="maxHourlyCustomers" required>
           </label>
           <br/>
           <label for="">Average Cookies sold per hour
-            <input type="number" name="averageCookieSale" id="">
+            <input type="number" name="averageHourlyCookieSale" required>
           </label>
           <br/>
         </fieldset>
-      </section> -->
+        <button type = submit>Submit</button>
+      </section>
 
-      <section>
-        <table>
+      <section id = "shopData">
+    <!--<tbody> 
           <thead>
             <tr>
               <th></th>
@@ -173,11 +174,8 @@
               <td></td>
               <td></td>
             </tr>
-          </tfoot>
+          </tfoot> -->
         </table>
-      </section>
-
-      <section id="shopLocationList">
       </section>
     </main>
     <script src="../js/app.js"></script>
