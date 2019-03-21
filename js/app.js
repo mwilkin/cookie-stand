@@ -9,10 +9,31 @@
 // ---------------
 // Define all global functions
 // ---------------
+
 var renderShop = function(parentElement){
-  var article = document.createElement('article');
-  article.setAttribute('id', `${this.name.toLowerCase().replace(' ', '_')}`);
-  parentElement.appendChild(article);
+  var table = document.createElement('table');
+  table.setAttribute('id', `${this.name.toLowerCase().replace(' ', '_')}`);
+  parentElement.appendChild(table);
+
+  var thead = document.createElement('thead');
+  parentElement.appendChild(thead);
+
+  var tr = document.createElement('tr');
+  parentElement.appendChild(tr);
+  
+  var th = document.createElement('th');
+  parentElement.appendChild(th);
+  
+  for(var i = 0; i < hours.length; i++){
+    th = document.createElement('th');
+    th.textContent = hours[i]; 
+    parentElement.appendChild(th);
+
+  }
+
+  
+
+
 
   var h2 = document.createElement('h2');
   h2.textContent = this.name;
@@ -31,6 +52,49 @@ var renderShop = function(parentElement){
   li.textContent = `Total cookies sold for the day: ${this.totalCookiesSold}`;
   ul.appendChild(li);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var renderShop = function(parentElement){
+//   var article = document.createElement('article');
+//   article.setAttribute('id', `${this.name.toLowerCase().replace(' ', '_')}`);
+//   parentElement.appendChild(article);
+
+//   var h2 = document.createElement('h2');
+//   h2.textContent = this.name;
+//   article.appendChild(h2);
+  
+//   var ul = document.createElement('ul');
+//   article.appendChild(ul);
+  
+//   for(var i = 0; i < hours.length; i++){
+//     var li = document.createElement('li');
+//     li.textContent = `${hours[i]}: ${this.cookiesSoldHourly[i]} cookies`;
+//     ul.appendChild(li);
+//   }
+  
+//   li = document.createElement('li');
+//   li.textContent = `Total cookies sold for the day: ${this.totalCookiesSold}`;
+//   ul.appendChild(li);
+// };
 
 function CookieShopLocation(name, minHourlyCustomers, maxHourlyCustomers, averageCookieSale, randomCustomerResult, cookiesSoldHourly, totalCookiesSold){
   this.name = name;
