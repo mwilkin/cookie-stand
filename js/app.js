@@ -51,14 +51,12 @@ var renderShop = function(){
   var shopRow = document.getElementById('shop');
   // console.log('hello in side rendershop');
   var td = document.createElement('td');
-  td.textContent = 'Old Mill';
-  // `${this.name.toLowerCase().replace(' ', '_')}`;
+  td.textContent = `${this.name}`;
   shopRow.appendChild(td);
 
   for(i = 0; i < hours.length; i++){
     td = document.createElement('td');
-    td.textContent = 12;
-    // `${this.cookiesSoldHourly[i]}`
+    td.textContent = `${this.cookiesSoldHourly[i]}`;
     shopRow.appendChild(td);
   }
 };
