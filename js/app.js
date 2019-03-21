@@ -38,7 +38,6 @@ for(var j = 0; j < hours.length; j++){
 th = document.createElement('th');
 th.textContent = 'Daily Location Total';
 tr.appendChild(th); 
-// place calcuated daily total (for loop)
 
 var tbody = document.createElement('tbody');
 table.appendChild(tbody);
@@ -49,16 +48,19 @@ tbody.appendChild(tr);
 
 var renderShop = function(){
   var shopRow = document.getElementById('shop');
-  // console.log('hello in side rendershop');
   var td = document.createElement('td');
   td.textContent = `${this.name}`;
   shopRow.appendChild(td);
 
-  for(i = 0; i < hours.length; i++){
+  for(var z = 0; z < hours.length; z++){
     td = document.createElement('td');
-    td.textContent = `${this.cookiesSoldHourly[i]}`;
+    td.textContent = `${this.cookiesSoldHourly[z]}`;
+    console.log(this.cookiesSoldHourly[z]);
     shopRow.appendChild(td);
   }
+  td = document.createElement('td');
+  td.textContent = `${this.totalCookiesSold}`;
+  shopRow.appendChild(td);
 };
 
 var tfoot = document.createElement('tfoot');
@@ -68,26 +70,14 @@ tr = document.createElement('tr');
 tfoot.appendChild(tr);
 
 var td = document.createElement('td');
-td.textContent = 'Hour Totals';
+td.textContent = 'Hourly Cookie Sale Totals';
 tr.appendChild(td);
 
-//Create a for loop add all the hourly cookie sale totals
+// for(i = 0, i < shopListLocation.length; i++) {
+//   console.log(5);
+// }
 
-// var renderShop = function(parentElement){
-//   var article = document.createElement('article');
-//   article.setAttribute('id', `${this.name.toLowerCase().replace(' ', '_')}`);
-//   parentElement.appendChild(article);
-  
-//   for(var i = 0; i < hours.length; i++){
-//     var li = document.createElement('li');
-//     li.textContent = `${hours[i]}: ${this.cookiesSoldHourly[i]} cookies`;
-//     ul.appendChild(li);
-//   }
-  
-//   li = document.createElement('li');
-//   li.textContent = `Total cookies sold for the day: ${this.totalCookiesSold}`;
-//   ul.appendChild(li);
-// };
+// create for loop to calculate hourly totals
 
 function CookieShopLocation(name, minHourlyCustomers, maxHourlyCustomers, averageCookieSale){
   this.name = name;
