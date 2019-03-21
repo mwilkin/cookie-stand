@@ -19,3 +19,27 @@ ul {
   padding: 20px;
   text-align: justify;
 }
+
+th , td {
+  padding: 10px, 10px, 10px, 10px;
+}
+
+tr td {
+  padding: 10px, 10px, 10px, 10px;
+}
+
+th {
+  letter-spacing: 0.1em;
+  font-size: 90%;
+  text-align: center;
+  border-top: 1px solid #999;
+
+}
+
+tr.even {
+  background-color: #efefef;
+}
+
+tr:hover {
+  background-color: #c3e6e5;
+}
