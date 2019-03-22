@@ -62,7 +62,7 @@ var renderShop = function(){
       shopRow.appendChild(td);
     }
     td = document.createElement('td');
-    td.textContent = `${this.totalCookiesSold}`;
+    td.textContent = `${shopListLocation[i].totalCookiesSold}`;
     shopRow.appendChild(td);
   }
 
