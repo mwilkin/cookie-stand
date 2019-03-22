@@ -5,6 +5,9 @@
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 var shopListLocation = [];
+var allShopsDailyTotal = [];
+// var allShopsHourlyTotal = [];
+var companyDailyTotal = 0;
 
 // DEFINE ALL GLOBAL FUNCTIONS
 
@@ -42,8 +45,6 @@ tr.appendChild(th);
 var tbody = document.createElement('tbody');
 table.appendChild(tbody);
 
-// assign new id to tbody to attach each tr 
-
 var renderShop = function(){
   for(i = 0; i < shopListLocation.length; i++){
     tr = document.createElement('tr');
@@ -60,12 +61,15 @@ var renderShop = function(){
       td = document.createElement('td');
       td.textContent = `${shopListLocation[i].cookiesSoldHourly[z]}`;
       shopRow.appendChild(td);
+      // allShopsHourlyTotal += parseInt(`${shopListLocation[i].cookiesSoldHourly[z]}`);
+      // console.log(allShopsHourlyTotal);
     }
     td = document.createElement('td');
     td.textContent = `${shopListLocation[i].totalCookiesSold}`;
     shopRow.appendChild(td);
+    allShopsDailyTotal.push(`${shopListLocation[i].totalCookiesSold}`);
+    console.log(`${shopListLocation[i].totalCookiesSold}`);
   }
-
 };
 
 var tfoot = document.createElement('tfoot');
@@ -78,10 +82,24 @@ var td = document.createElement('td');
 td.textContent = 'Hourly Cookie Sale Totals';
 tr.appendChild(td);
 
-// nested for loop to calculate column totals
-// for(i = 0, i < shopListLocation.length; i++) {
-//   console.log(5);
-// }
+for(i =0; i < hours.length; i++){
+  td = document.createElement('td');
+  td.textContent = 2;
+  tr.appendChild(td);
+}
+debugger;
+for(i = 0; i < allShopsDailyTotal.length; i++){
+  companyDailyTotal += parseInt(allShopsDailyTotal[i]);
+  console.log(allShopsDailyTotal.length);
+  console.log(companyDailyTotal);
+  console.log(allShopsDailyTotal[i]);
+  
+}
+console.log(allShopsDailyTotal);
+td = document.createElement('td');
+td.textContent = companyDailyTotal;
+tr.appendChild(td);
+
 
 function CookieShopLocation(name, minHourlyCustomers, maxHourlyCustomers, averageCookieSale){
   this.name = name;
