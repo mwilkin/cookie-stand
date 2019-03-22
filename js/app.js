@@ -42,25 +42,28 @@ tr.appendChild(th);
 var tbody = document.createElement('tbody');
 table.appendChild(tbody);
 
-tr = document.createElement('tr');
-tr.setAttribute('id', 'shop');
-tbody.appendChild(tr);
 
 var renderShop = function(){
-  var shopRow = document.getElementById('shop');
-  var td = document.createElement('td');
-  td.textContent = `${this.name}`;
-  shopRow.appendChild(td);
-
-  for(var z = 0; z < hours.length; z++){
+  for(i = 0; i < shopListLocation.length; i++){
+    tr = document.createElement('tr');
+    tr.setAttribute('id', 'shop');
+    tbody.appendChild(tr);
+    var shopRow = document.getElementById('shop');
+    var td = document.createElement('td');
+    td.textContent = `${shopListLocation[i].name}`;
+    shopRow.appendChild(td);
+  
+    for(var z = 0; z < hours.length; z++){
+      td = document.createElement('td');
+      td.textContent = `${shopListLocation[i].cookiesSoldHourly[z]}`;
+      console.log(shopListLocation[i].cookiesSoldHourly[z]);
+      shopRow.appendChild(td);
+    }
     td = document.createElement('td');
-    td.textContent = `${this.cookiesSoldHourly[z]}`;
-    console.log(this.cookiesSoldHourly[z]);
+    td.textContent = `${this.totalCookiesSold}`;
     shopRow.appendChild(td);
   }
-  td = document.createElement('td');
-  td.textContent = `${this.totalCookiesSold}`;
-  shopRow.appendChild(td);
+
 };
 
 var tfoot = document.createElement('tfoot');
@@ -73,11 +76,10 @@ var td = document.createElement('td');
 td.textContent = 'Hourly Cookie Sale Totals';
 tr.appendChild(td);
 
+// nested for loop to calculate column totals
 // for(i = 0, i < shopListLocation.length; i++) {
 //   console.log(5);
 // }
-
-// create for loop to calculate hourly totals
 
 function CookieShopLocation(name, minHourlyCustomers, maxHourlyCustomers, averageCookieSale){
   this.name = name;
