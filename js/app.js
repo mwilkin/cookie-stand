@@ -52,7 +52,7 @@ var renderShop = function(){
     tbody.appendChild(tr);
     
     var shopRow = document.getElementById('shop'+ i);
-    console.log('shop'+ i);
+    console.log('creating new tr with id:', 'shop'+ i);
     var td = document.createElement('td');
     td.textContent = `${shopListLocation[i].name}`;
     shopRow.appendChild(td);
@@ -68,7 +68,7 @@ var renderShop = function(){
     td.textContent = `${shopListLocation[i].totalCookiesSold}`;
     shopRow.appendChild(td);
     allShopsDailyTotal.push(`${shopListLocation[i].totalCookiesSold}`);
-    console.log(`${shopListLocation[i].totalCookiesSold}`);
+    console.log('an array with each shops cookie totals', `${shopListLocation[i].totalCookiesSold}`);
   }
 };
 
@@ -76,30 +76,12 @@ var tfoot = document.createElement('tfoot');
 table.appendChild(tfoot);
 
 tr = document.createElement('tr');
+tr.setAttribute('id', 'foot');
 tfoot.appendChild(tr);
 
 var td = document.createElement('td');
 td.textContent = 'Hourly Cookie Sale Totals';
 tr.appendChild(td);
-
-for(i =0; i < hours.length; i++){
-  td = document.createElement('td');
-  td.textContent = 2;
-  tr.appendChild(td);
-}
-debugger;
-for(i = 0; i < allShopsDailyTotal.length; i++){
-  companyDailyTotal += parseInt(allShopsDailyTotal[i]);
-  console.log(allShopsDailyTotal.length);
-  console.log(companyDailyTotal);
-  console.log(allShopsDailyTotal[i]);
-  
-}
-console.log(allShopsDailyTotal);
-td = document.createElement('td');
-td.textContent = companyDailyTotal;
-tr.appendChild(td);
-
 
 function CookieShopLocation(name, minHourlyCustomers, maxHourlyCustomers, averageCookieSale){
   this.name = name;
@@ -140,3 +122,24 @@ var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
 var drakePark = new CookieShopLocation('Drake Park', 3, 24, 1.2);
 
 oldMill.render();
+
+console.log('the length of the array with all the daily cookies sales by shop', allShopsDailyTotal.length);
+
+console.log('the running total of daily cookie sales for all shops', companyDailyTotal);
+
+console.log(allShopsDailyTotal);
+
+for(i = 0; i < allShopsDailyTotal.length; i++){
+  companyDailyTotal += parseInt(allShopsDailyTotal[i]);
+  console.log('checking the composition of the array according to the length of the array:', allShopsDailyTotal[i]);
+  
+}
+for(i =0; i < hours.length; i++){
+  td = document.createElement('td');
+  td.textContent = 2;
+  foot.appendChild(td);
+}
+
+td = document.createElement('td');
+td.textContent = companyDailyTotal;
+foot.appendChild(td);
