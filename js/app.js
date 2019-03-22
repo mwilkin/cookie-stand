@@ -42,13 +42,16 @@ tr.appendChild(th);
 var tbody = document.createElement('tbody');
 table.appendChild(tbody);
 
+// assign new id to tbody to attach each tr 
 
 var renderShop = function(){
   for(i = 0; i < shopListLocation.length; i++){
     tr = document.createElement('tr');
-    tr.setAttribute('id', 'shop');
+    tr.setAttribute('id', 'shop'+ i);
     tbody.appendChild(tr);
-    var shopRow = document.getElementById('shop');
+    
+    var shopRow = document.getElementById('shop'+ i);
+    console.log('shop'+ i);
     var td = document.createElement('td');
     td.textContent = `${shopListLocation[i].name}`;
     shopRow.appendChild(td);
@@ -56,7 +59,6 @@ var renderShop = function(){
     for(var z = 0; z < hours.length; z++){
       td = document.createElement('td');
       td.textContent = `${shopListLocation[i].cookiesSoldHourly[z]}`;
-      console.log(shopListLocation[i].cookiesSoldHourly[z]);
       shopRow.appendChild(td);
     }
     td = document.createElement('td');
