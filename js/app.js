@@ -80,8 +80,15 @@ tr.setAttribute('id', 'foot');
 tfoot.appendChild(tr);
 
 var td = document.createElement('td');
+var footerData = document.getElementById('foot');
 td.textContent = 'Hourly Cookie Sale Totals';
-tr.appendChild(td);
+footerData.appendChild(td);
+
+for(i = 0; i < hours.length; i++){
+  td = document.createElement('td');
+  td.textContent = 2;
+  footerData.appendChild(td);
+}
 
 function CookieShopLocation(name, minHourlyCustomers, maxHourlyCustomers, averageCookieSale){
   this.name = name;
@@ -125,21 +132,14 @@ oldMill.render();
 
 console.log('the length of the array with all the daily cookies sales by shop', allShopsDailyTotal.length);
 
-console.log('the running total of daily cookie sales for all shops', companyDailyTotal);
-
 console.log(allShopsDailyTotal);
 
 for(i = 0; i < allShopsDailyTotal.length; i++){
   companyDailyTotal += parseInt(allShopsDailyTotal[i]);
   console.log('checking the composition of the array according to the length of the array:', allShopsDailyTotal[i]);
-  
 }
-for(i =0; i < hours.length; i++){
-  td = document.createElement('td');
-  td.textContent = 2;
-  foot.appendChild(td);
-}
+console.log('the running total of daily cookie sales for all shops', companyDailyTotal);
 
 td = document.createElement('td');
 td.textContent = companyDailyTotal;
-foot.appendChild(td);
+footerData.appendChild(td);
