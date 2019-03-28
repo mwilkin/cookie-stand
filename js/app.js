@@ -8,6 +8,7 @@ var shopListLocation = [];
 var allShopsDailyTotal = [];
 var allShopsHourlyTotal = [];
 var companyDailyTotal = 0;
+var companyCookieSoldHourly =0;
 
 // DEFINE ALL GLOBAL FUNCTIONS
 function addTableToDOM(){
@@ -59,7 +60,6 @@ function generateStoreData() {
 
 // RUN CODE
 
-
 function renderTable(){
   addTableToDOM();
   generateStoreData();
@@ -88,9 +88,22 @@ function addFootertoTable(){
 
   for(var i = 0; i < hours.length; i++){
     td = document.createElement('td');
-    td.textContent = 2; // Hourly sales totals across all stores
+    for(var j = 0; j < shopListLocation.length; j++){
+      companyCookieSoldHourly += parseInt(shopListLocation[j].cookiesSoldHourly);
+    }
+    td.textContent = companyCookieSoldHourly;
     tr.appendChild(td);
   }
+
+  for(i = 0; i < allShopsDailyTotal.length; i++){
+    companyDailyTotal += parseInt(allShopsDailyTotal[i]);
+  }
+
+  console.log('the running total of daily cookie sales for all shops', companyDailyTotal);
+  var footerData = document.getElementById('foot');
+  td = document.createElement('td');
+  td.textContent = companyDailyTotal;
+  footerData.appendChild(td);
 }
 
 function CookieShopLocation(name, minHourlyCustomers, maxHourlyCustomers, averageCookieSale){
@@ -120,14 +133,12 @@ function CookieShopLocation(name, minHourlyCustomers, maxHourlyCustomers, averag
 var renderShop = function(){
   var tbody = document.getElementById('cookieStandtbody');
   for(var i = 0; i < shopListLocation.length; i++){
-    console.log(shopListLocation.length);
     var tr = document.createElement('tr');
     tr.setAttribute('id', 'shop' + i);
     tbody.appendChild(tr);
 
     var td = document.createElement('td');
     td.textContent = `${shopListLocation[i].name}`;
-    console.log(shopListLocation[i].name);
     tr.appendChild(td);
     for(var j = 0; j < hours.length; j++){
       td = document.createElement('td');
@@ -146,12 +157,3 @@ CookieShopLocation.prototype.render = renderShop;
 
 renderTable(); // Entry Point
 
-for(var i = 0; i < allShopsDailyTotal.length; i++){
-  companyDailyTotal += parseInt(allShopsDailyTotal[i]);
-}
-console.log('the running total of daily cookie sales for all shops', companyDailyTotal);
-
-var footerData = document.getElementById('foot');
-var td = document.createElement('td');
-td.textContent = companyDailyTotal;
-footerData.appendChild(td);
