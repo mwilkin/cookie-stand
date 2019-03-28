@@ -146,12 +146,12 @@ CookieShopLocation.prototype.render = renderShop;
 
 renderTable(); // Entry Point
 
-// for(var i = 0; i < allShopsDailyTotal.length; i++){
-//   companyDailyTotal += parseInt(allShopsDailyTotal[i]);
-// }
-// console.log('the running total of daily cookie sales for all shops', companyDailyTotal);
+for(var i = 0; i < allShopsDailyTotal.length; i++){
+  companyDailyTotal += parseInt(allShopsDailyTotal[i]);
+}
+console.log('the running total of daily cookie sales for all shops', companyDailyTotal);
 
-// var footerData = document.getElementById('foot');
-// var td = document.createElement('td');
-// td.textContent = companyDailyTotal;
-// footerData.appendChild(td);
+var footerData = document.getElementById('foot');
+var td = document.createElement('td');
+td.textContent = companyDailyTotal;
+footerData.appendChild(td);
