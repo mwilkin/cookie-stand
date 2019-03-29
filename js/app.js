@@ -45,7 +45,7 @@ function addTableToDOM(){
 
 
 function generateStoreData() {
-  var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
+  // var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
   // rvar pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7);
   // va schwabAphitheater = new CookieShopLocation('Schwab Aphitheater', 20, 38, 2.3);
   // var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
@@ -53,6 +53,7 @@ function generateStoreData() {
 }
 
 var addNewCookieStore = document.getElementById('addCookieShopForm');
+console.log(addNewCookieStore);
 
 var addCookieShopEventHandler = function(event){
   event.preventDefault();
@@ -71,8 +72,8 @@ var addCookieShopEventHandler = function(event){
 
   var newCookieShop = new CookieShopLocation(newName, newMinHourlyCustomers, newMaxHourlyCustomers, newAverageCookieSale);
 
-
-  // .render(document.getElementById('shopData'));
+  console.log('hi from inside the form');
+  console.log(newCookieShop);
 };
 
 addNewCookieStore.addEventListener('submit', addCookieShopEventHandler);
@@ -169,4 +170,3 @@ var renderShop = function(){
 CookieShopLocation.prototype.render = renderShop;
 
 renderTable(); // Entry Point
-
