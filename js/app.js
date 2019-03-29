@@ -50,33 +50,33 @@ function generateStoreData() {
   // va schwabAphitheater = new CookieShopLocation('Schwab Aphitheater', 20, 38, 2.3);
   // var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
   // var drakePark = new CookieShopLocation('Drake Park', 3, 24, 1.2);
+  var addNewCookieStore = document.getElementById('addCookieShopForm');
+  console.log(addNewCookieStore);
+
+  var addCookieShopEventHandler = function(event){
+    event.preventDefault();
+
+    var target = event.target;
+
+    var newName = target.name.value;
+    var newMinHourlyCustomers = parseInt(target.minHourlyCustomers.value);
+
+    var newMaxHourlyCustomers = parseInt(target.maxHourlyCustomers.value);
+
+    var newAverageCookieSale = parseInt(target.averageHourlyCookieSale.value);
+
+    target.reset();
+
+    var newCookieShop = new CookieShopLocation(newName, newMinHourlyCustomers, newMaxHourlyCustomers, newAverageCookieSale);
+
+    console.log('hi from inside the form');
+    console.log(newCookieShop);
+    newCookieShop.render();
+  };
+
+  addNewCookieStore.addEventListener('submit', addCookieShopEventHandler);
 }
 
-var addNewCookieStore = document.getElementById('addCookieShopForm');
-console.log(addNewCookieStore);
-
-var addCookieShopEventHandler = function(event){
-  event.preventDefault();
-
-  var target = event.target;
-
-  var newName = target.name.value;
-
-  var newMinHourlyCustomers = parseInt(target.minHourlyCustomers.value);
-
-  var newMaxHourlyCustomers = parseInt(target.maxHourlyCustomers.value);
-
-  var newAverageCookieSale = parseInt(target.averageHourlyCookieSale.value);
-
-  target.reset();
-
-  var newCookieShop = new CookieShopLocation(newName, newMinHourlyCustomers, newMaxHourlyCustomers, newAverageCookieSale);
-
-  console.log('hi from inside the form');
-  console.log(newCookieShop);
-};
-
-addNewCookieStore.addEventListener('submit', addCookieShopEventHandler);
 
 // RUN CODE
 
