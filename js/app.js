@@ -45,14 +45,13 @@ function addTableToDOM(){
 
 
 function generateStoreData() {
-  // var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
-  // rvar pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7);
-  // va schwabAphitheater = new CookieShopLocation('Schwab Aphitheater', 20, 38, 2.3);
-  // var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
-  // var drakePark = new CookieShopLocation('Drake Park', 3, 24, 1.2);
+// var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
+// var pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7);
+// var schwabAphitheater = new CookieShopLocation('Schwab Aphitheater', 20, 38, 2.3);
+// var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
+// var drakePark = new CookieShopLocation('Drake Park', 3, 24, 1.2);
   var addNewCookieStore = document.getElementById('addCookieShopForm');
-  console.log(addNewCookieStore);
-
+  
   var addCookieShopEventHandler = function(event){
     event.preventDefault();
 
@@ -69,14 +68,14 @@ function generateStoreData() {
 
     var newCookieShop = new CookieShopLocation(newName, newMinHourlyCustomers, newMaxHourlyCustomers, newAverageCookieSale);
 
-    console.log('hi from inside the form');
-    console.log(newCookieShop);
     newCookieShop.render();
   };
 
   addNewCookieStore.addEventListener('submit', addCookieShopEventHandler);
 }
 
+// 2 Problems: 1) columns not adding. 2) Table not clearing itself upon new entry
+// document.getElementById('cookieStandtbody').clear();
 
 // RUN CODE
 
@@ -164,6 +163,8 @@ var renderShop = function(){
     td.textContent = `${shopListLocation[i].totalCookiesSold}`;
     tr.appendChild(td);
     allShopsDailyTotal.push(`${shopListLocation[i].totalCookiesSold}`);
+    console.log(allShopsDailyTotal);
+
   }
 };
 
