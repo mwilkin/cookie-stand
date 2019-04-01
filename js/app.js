@@ -8,9 +8,34 @@ var shopListLocation = [];
 var allShopsDailyTotal = [];
 var allShopsHourlyTotal = [];
 var companyDailyTotal = 0;
-var companyCookieSoldHourly =0;
+// var companyCookieSoldHourly =0;
 
 // DEFINE ALL GLOBAL FUNCTIONS
+
+function CookieShopLocation(name, minHourlyCustomers, maxHourlyCustomers, averageCookieSale){
+  this.name = name;
+  this.minHourlyCustomers = minHourlyCustomers;
+  this.maxHourlyCustomers = maxHourlyCustomers;
+  this.averageCookieSale = averageCookieSale;
+  this.randomCustomerResult = [];
+  this.cookiesSoldHourly = [];
+  this.totalCookiesSold = 0;
+  this.calculateRandomNumberOfCustomers = function(){
+    for(var i = 0; i < hours.length; i++){
+      this.randomCustomerResult.push(Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers);
+    }
+  };
+  this.calculateCookiesSoldHourly = function() {
+    this.calculateRandomNumberOfCustomers();
+    for(var i = 0; i < hours.length; i++ ) {
+      this.cookiesSoldHourly.push(Math.round(this.randomCustomerResult[i] * this.averageCookieSale));
+      this.totalCookiesSold += this.cookiesSoldHourly[i];
+    }
+  };
+  this.calculateCookiesSoldHourly();
+  shopListLocation.push(this);
+}
+
 function addTableToDOM(){
 // Creating getting HTML elements
   var parentElement = document.getElementById('shopData');
@@ -45,13 +70,13 @@ function addTableToDOM(){
 
 
 function generateStoreData() {
-// var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
-// var pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7);
+var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
+var pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7);
 // var schwabAphitheater = new CookieShopLocation('Schwab Aphitheater', 20, 38, 2.3);
 // var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
 // var drakePark = new CookieShopLocation('Drake Park', 3, 24, 1.2);
   var addNewCookieStore = document.getElementById('addCookieShopForm');
-  
+
   var addCookieShopEventHandler = function(event){
     event.preventDefault();
 
@@ -69,12 +94,14 @@ function generateStoreData() {
     var newCookieShop = new CookieShopLocation(newName, newMinHourlyCustomers, newMaxHourlyCustomers, newAverageCookieSale);
 
     newCookieShop.render();
-    console.log('newCookieShop info from input form', newCookieShop);
   };
-  addNewCookieStore.addEventListener('submit', addCookieShopEventHandler);
 }
 
-// 2 Problems: 1) columns not adding. 2) Table not clearing itself upon new entry
+//  Problems: When using the form for input: 
+  // 1) the columns are not adding 
+  // 2) Table not clearing itself upon new entry; or adding just the new row. 
+  // 3)hourly totals not being added across the row.
+
 // document.getElementById('cookieStandtbody').clear();
 
 // RUN CODE
@@ -83,31 +110,7 @@ function renderTable(){
   addTableToDOM();
   generateStoreData();
   renderShop();
-  addFootertoTable();
-}
-
-function CookieShopLocation(name, minHourlyCustomers, maxHourlyCustomers, averageCookieSale){
-  this.name = name;
-  this.minHourlyCustomers = minHourlyCustomers;
-  this.maxHourlyCustomers = maxHourlyCustomers;
-  this.averageCookieSale = averageCookieSale;
-  this.randomCustomerResult = [];
-  this.cookiesSoldHourly = [];
-  this.totalCookiesSold = 0;
-  this.calculateRandomNumberOfCustomers = function(){
-    for(var i = 0; i < hours.length; i++){
-      this.randomCustomerResult.push(Math.floor(Math.random() * (this.maxHourlyCustomers - this.minHourlyCustomers + 1)) + this.minHourlyCustomers);
-    }
-  };
-  this.calculateCookiesSoldHourly = function() {
-    this.calculateRandomNumberOfCustomers();
-    for(var i = 0; i < hours.length; i++ ) {
-      this.cookiesSoldHourly.push(Math.round(this.randomCustomerResult[i] * this.averageCookieSale));
-      this.totalCookiesSold += this.cookiesSoldHourly[i];
-    }
-  };
-  this.calculateCookiesSoldHourly();
-  shopListLocation.push(this);
+  addFooterToTable();
 }
 
 var renderShop = function(){
@@ -130,13 +133,11 @@ var renderShop = function(){
     td.textContent = `${shopListLocation[i].totalCookiesSold}`;
     tr.appendChild(td);
     allShopsDailyTotal.push(`${shopListLocation[i].totalCookiesSold}`);
-    console.log('renderShop allShopsDailyTotal',allShopsDailyTotal);
-
   }
+  
 };
 
-function addFootertoTable(){
-  console.log('shopListLocation in addFootertoTable', shopListLocation);
+function addFooterToTable(){
   var table = document.getElementById('cookieStandSalesTable');
 
   var tfoot = document.createElement('tfoot');
@@ -150,12 +151,14 @@ function addFootertoTable(){
   td.textContent = 'Hourly Cookie Sale Totals';
   tr.appendChild(td);
 
-  for(var i = 0; i < hours.length; i++){
-    td = document.createElement('td');
+  for(var i = 0; i < hours.length; i++){  // this is adding the columns 
+    var companyCookieSoldHourly = 0;
     for(var j = 0; j < shopListLocation.length; j++){
-      companyCookieSoldHourly += parseInt(shopListLocation[j].cookiesSoldHourly);
+      companyCookieSoldHourly += parseInt(shopListLocation[j].cookiesSoldHourly[i]);
+      console.log('in footer', shopListLocation[j].cookiesSoldHourly[i]);
+      console.log(companyCookieSoldHourly);
     }
-    console.log('shopListLocation in outer-nested for loop', shopListLocation);
+    td = document.createElement('td');
     td.textContent = companyCookieSoldHourly;
     tr.appendChild(td);
   }
@@ -173,3 +176,5 @@ function addFootertoTable(){
 CookieShopLocation.prototype.render = renderShop;
 
 renderTable(); // Entry Point
+
+
