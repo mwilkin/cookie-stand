@@ -8,7 +8,7 @@ var shopListLocation = [];
 var allShopsDailyTotal = [];
 var allShopsHourlyTotal = [];
 var companyDailyTotal = 0;
-// var companyCookieSoldHourly =0;
+var companyHourlyTotal = 0;
 
 // DEFINE ALL GLOBAL FUNCTIONS
 
@@ -98,9 +98,6 @@ var pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7);
 }
 
 //  Problems: When using the form for input: 
-  // 1) the columns are not adding 
-  // 2) Table not clearing itself upon new entry; or adding just the new row. 
-  // 3)hourly totals not being added across the row.
 
 // document.getElementById('cookieStandtbody').clear();
 
@@ -134,7 +131,6 @@ var renderShop = function(){
     tr.appendChild(td);
     allShopsDailyTotal.push(`${shopListLocation[i].totalCookiesSold}`);
   }
-  
 };
 
 function addFooterToTable(){
@@ -151,25 +147,20 @@ function addFooterToTable(){
   td.textContent = 'Hourly Cookie Sale Totals';
   tr.appendChild(td);
 
-  for(var i = 0; i < hours.length; i++){  // this is adding the columns 
-    var companyCookieSoldHourly = 0;
+  for(var i = 0; i < hours.length; i++){
+    var shopCookieSoldHourly = 0;
     for(var j = 0; j < shopListLocation.length; j++){
-      companyCookieSoldHourly += parseInt(shopListLocation[j].cookiesSoldHourly[i]);
-      console.log('in footer', shopListLocation[j].cookiesSoldHourly[i]);
-      console.log(companyCookieSoldHourly);
+      shopCookieSoldHourly += parseInt(shopListLocation[j].cookiesSoldHourly[i]);
     }
     td = document.createElement('td');
-    td.textContent = companyCookieSoldHourly;
+    companyHourlyTotal += shopCookieSoldHourly;
+    td.textContent = shopCookieSoldHourly;
     tr.appendChild(td);
-  }
-
-  for(i = 0; i < allShopsDailyTotal.length; i++){
-    companyDailyTotal += parseInt(allShopsDailyTotal[i]);
   }
 
   var footerData = document.getElementById('foot');
   td = document.createElement('td');
-  td.textContent = companyDailyTotal;
+  td.textContent = companyHourlyTotal;
   footerData.appendChild(td);
 }
 
