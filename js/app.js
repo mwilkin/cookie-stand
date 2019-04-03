@@ -9,6 +9,7 @@ var allShopsDailyTotal = [];
 var allShopsHourlyTotal = [];
 var companyDailyTotal = 0;
 var companyHourlyTotal = 0;
+var addNewCookieStore = document.getElementById('addCookieShopForm');
 
 // DEFINE ALL GLOBAL FUNCTIONS
 
@@ -70,36 +71,33 @@ function addTableToDOM(){
 
 
 function generateStoreData() {
-var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
-var pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7);
-// var schwabAphitheater = new CookieShopLocation('Schwab Aphitheater', 20, 38, 2.3);
-// var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
-// var drakePark = new CookieShopLocation('Drake Park', 3, 24, 1.2);
-  var addNewCookieStore = document.getElementById('addCookieShopForm');
+  var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
+  var pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7);
+  var schwabAphitheater = new CookieShopLocation('Schwab Aphitheater', 20, 38, 2.3);
+  var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
+  var drakePark = new CookieShopLocation('Drake Park', 3, 24, 1.2);
 
-  var addCookieShopEventHandler = function(event){
-    event.preventDefault();
-
-    var target = event.target;
-
-    var newName = target.name.value;
-    var newMinHourlyCustomers = parseInt(target.minHourlyCustomers.value);
-
-    var newMaxHourlyCustomers = parseInt(target.maxHourlyCustomers.value);
-
-    var newAverageCookieSale = parseInt(target.averageHourlyCookieSale.value);
-
-    target.reset();
-
-    var newCookieShop = new CookieShopLocation(newName, newMinHourlyCustomers, newMaxHourlyCustomers, newAverageCookieSale);
-
-    newCookieShop.render();
-  };
 }
+var addCookieShopEventHandler = function(event){
+  event.preventDefault();
 
-//  Problems: When using the form for input: 
+  var target = event.target;
 
-// document.getElementById('cookieStandtbody').clear();
+  var newName = target.name.value;
+  
+  var newMinHourlyCustomers = parseInt(target.minHourlyCustomers.value);
+
+  var newMaxHourlyCustomers = parseInt(target.maxHourlyCustomers.value);
+
+  var newAverageCookieSale = parseInt(target.averageHourlyCookieSale.value);
+
+  target.reset();
+  
+  var newCookieShop = new CookieShopLocation(newName, newMinHourlyCustomers, newMaxHourlyCustomers, newAverageCookieSale);
+  console.log(newCookieShop);
+
+  newCookieShop.render();
+};
 
 // RUN CODE
 
@@ -168,4 +166,4 @@ CookieShopLocation.prototype.render = renderShop;
 
 renderTable(); // Entry Point
 
-
+addNewCookieStore.addCookieShopEventListener('submit', addCookieShopEventHandler);
