@@ -9,39 +9,41 @@
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
-    <main id="content">
-      <header id="salesPage">
-        <h1>Sales Page</h1>
-        <a href="../index.html">Public Page</a>
-      </header>
-      <section id='hero'>
-          <img src="../img/salmon.png" alt="salmon picture">
-      </section>
-      <section id="form">
-        <form id="addCookieShopForm">
-          <fieldset>
-            <legend>
-              Cookie Shop Sales Information
-            </legend>
-            <label for="name">Shop Name</label>
-            <input type="text" name="name" required><br>
+    <div id="container">
+      <main id="content">
+        <header id="salesPage">
+          <h1>Sales Page</h1>
+          <a href="../index.html">Public Page</a>
+        </header>
+        <section id='hero'>
+            <img src="../img/salmon.png" alt="salmon picture">
+        </section>
+        <section id="form">
+          <form id="addCookieShopForm">
+            <fieldset>
+              <legend>
+                Cookie Shop Sales Information
+              </legend>
+              <label for="name">Shop Name</label>
+              <input type="text" name="name" placeholder = "Shop Name" required><br>
 
-            <label for="minHourlyCustomers">Minimum Number of Customers per day</label>
-            <input type="number" name="minHourlyCustomers" required><br>
-            <label for="maxHourlyCustomers">Maximum Number of Customers per day</label>
-            <input type="number" name="maxHourlyCustomers" required><br>git 
-            <label for="averageHourlyCookieSale">Average Cookies sold per hour</label>
-            <input type="number" name="averageHourlyCookieSale" required>
-          </fieldset>
-          <button type = "submit">Submit</button>
-        </form>
-      </section>
-      <section id = "shopData">
-      </section>
-      <section id="footer">
-          <img src="../img/chinook.jpg" alt="chinook picture">
-      </section>
-    </main>
-    <script src="../js/app.js"></script>
+              <label for="minHourlyCustomers">Minimum Number of Customers per day</label>
+              <input type="number" min=0 name="minHourlyCustomers" placeholder=0 required><br>
+              <label for="maxHourlyCustomers">Maximum Number of Customers per day</label>
+              <input type="number" min=0 placeholder=0 name="maxHourlyCustomers" required><br>git 
+              <label for="averageHourlyCookieSale">Average Cookies sold per hour</label>
+              <input type="number" min=0 placeholder=0 name="averageHourlyCookieSale" required>
+            </fieldset>
+            <button type = "submit">Submit</button>
+          </form>
+        </section>
+        <section id = "shopData">
+        </section>
+        <section id="footer">
+            <img src="../img/chinook.jpg" alt="chinook picture">
+        </section>
+      </main>
+      <script src="../js/app.js"></script>
+    </div>
   </body>
 </html>
