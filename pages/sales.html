@@ -16,29 +16,23 @@
       <section>
         <a href="../index.html">Public Page</a>
       </section>
-      <section id="form">
-        <fieldset>
-          <legend>
-            Cookie Shop Sales Information
-          </legend>
-          <label for="">Shop Name
+      <section>
+        <form id="addCookieShopForm">
+          <fieldset>
+            <legend>
+              Cookie Shop Sales Information
+            </legend>
+            <label for="name">Shop Name</label>
             <input type="text" name="name" required>
-          </label>
-          <br/>
-          <label for="">Minimum Number of Customers per day
+            <label for="minHourlyCustomers">Minimum Number of Customers per day</label>
             <input type="number" name="minHourlyCustomers" required>
-          </label>
-          <br/>
-          <label for="">Maximum Number of Customers per day
+            <label for="maxHourlyCustomers">Maximum Number of Customers per day</label>
             <input type="number" name="maxHourlyCustomers" required>
-          </label>
-          <br/>
-          <label for="">Average Cookies sold per hour
+            <label for="averageHourlyCookieSale">Average Cookies sold per hour</label>
             <input type="number" name="averageHourlyCookieSale" required>
-          </label>
-          <br/>
-        </fieldset>
-        <button type = submit>Submit</button>
+          </fieldset>
+          <button type = "submit">Submit</button>
+        </form>
       </section>
       <section id = "shopData">
       </section>
