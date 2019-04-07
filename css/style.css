@@ -1,6 +1,11 @@
-* {
+body {
   background: grey
 }
+
+
+
+
+
 
 header {
   margin: auto;
@@ -26,7 +31,6 @@ th , td {
 
 tr td {
   padding: 10px, 10px, 10px, 10px;
-  
 
 }
 
