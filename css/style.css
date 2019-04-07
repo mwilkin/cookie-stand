@@ -10,9 +10,6 @@ body {
   margin: 10px;
 }
 
-
-
-
 header {
   grid-column-start: 1;
   grid-column-end: 12;
@@ -42,6 +39,18 @@ header {
 
 #footer {
   grid-column-start: 1;
+  grid-column-end: 12;
+  text-align: center;
+}
+
+#form {
+  grid-column-start: 2;
+  grid-column-end: 6;
+  text-align: left;
+}
+
+#shopData {
+  grid-column-start: 6;
   grid-column-end: 12;
   text-align: center;
 }
