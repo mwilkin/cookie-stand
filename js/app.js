@@ -9,7 +9,6 @@ var allShopsDailyTotal = [];
 var allShopsHourlyTotal = [];
 var companyDailyTotal = 0;
 var companyHourlyTotal = 0;
-var addNewCookieStore = document.getElementById('addCookieShopForm');
 var container = document.getElementById('container');
 
 // DEFINE ALL GLOBAL FUNCTIONS
@@ -72,12 +71,12 @@ function addTableToDOM(){
 
 
 function generateStoreData() {
-  var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
+  container.addEventListener('submit', addCookieShopEventHandler);
+  // var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
   // var pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7);
   // var schwabAphitheater = new CookieShopLocation('Schwab Aphitheater', 20, 38, 2.3);
   // var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
   // var drakePark = new CookieShopLocation('Drake Park', 3, 24, 1.2);
-
 }
 var addCookieShopEventHandler = function(event){
   event.preventDefault();
@@ -95,7 +94,6 @@ var addCookieShopEventHandler = function(event){
   target.reset();
   
   var newCookieShop = new CookieShopLocation(newName, newMinHourlyCustomers, newMaxHourlyCustomers, newAverageCookieSale);
-  console.log(newCookieShop);
 
   newCookieShop.render();
 };
@@ -109,8 +107,18 @@ function renderTable(){
   addFooterToTable();
 }
 
+//I think I'm getting the repeat shop name and data printing because there is no logic statment in renderShop()
+
+function clearTable(tbody){
+  var tr = document.getElementById('shop'+i);
+  tbody.removeChild(tr);
+}
+
+
 var renderShop = function(){
   var tbody = document.getElementById('cookieStandtbody');
+  console.log('in renderShop', shopListLocation);
+  clearTable();
   for(var i = 0; i < shopListLocation.length; i++){
     var tr = document.createElement('tr');
     tr.setAttribute('id', 'shop' + i);
@@ -129,8 +137,16 @@ var renderShop = function(){
     td.textContent = `${shopListLocation[i].totalCookiesSold}`;
     tr.appendChild(td);
     allShopsDailyTotal.push(`${shopListLocation[i].totalCookiesSold}`);
+    console.log(allShopsDailyTotal);
   }
 };
+
+// debugger;
+
+// hourly totals are created in addFooterToTable()
+//we are getting in here but with shoplocation having not data
+//why is this running on refresh?
+
 
 function addFooterToTable(){
   var table = document.getElementById('cookieStandSalesTable');
@@ -148,6 +164,8 @@ function addFooterToTable(){
 
   for(var i = 0; i < hours.length; i++){
     var shopCookieSoldHourly = 0;
+    // console.log('are we here?');
+    // console.log('shop list location array', shopListLocation);
     for(var j = 0; j < shopListLocation.length; j++){
       shopCookieSoldHourly += parseInt(shopListLocation[j].cookiesSoldHourly[i]);
     }
@@ -162,9 +180,8 @@ function addFooterToTable(){
   td.textContent = companyHourlyTotal;
   footerData.appendChild(td);
 }
-
 CookieShopLocation.prototype.render = renderShop;
 
 renderTable(); // Entry Point
 
-container.addEventListener('submit', addCookieShopEventHandler);
+
