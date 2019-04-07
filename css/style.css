@@ -1,11 +1,58 @@
-* {
+body {
   background: grey
 }
 
+#content {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 250px, 250px;
+  grid-row-gap: 10px;
+  margin: 10px;
+}
+
 header {
-  margin: auto;
+  grid-column-start: 1;
+  grid-column-end: 12;
+  background-color: #AE5D37;
   padding: 30px;
-  text-align: center;  
+  text-align: center;
+  
+}
+
+#hero{
+  grid-column-start: 2;
+  grid-column-end: 11;
+  text-align: center;
+}
+#info{
+  grid-column-start: 2;
+  grid-column-end: 5;
+  text-align: left;
+}
+
+#images{
+  grid-column-start: 6;
+  grid-column-end: 12;
+  text-align: center`;
+}
+
+
+#footer {
+  grid-column-start: 1;
+  grid-column-end: 12;
+  text-align: center;
+}
+
+#form {
+  grid-column-start: 2;
+  grid-column-end: 6;
+  text-align: left;
+}
+
+#shopData {
+  grid-column-start: 6;
+  grid-column-end: 12;
+  text-align: center;
 }
 
 section {
@@ -26,7 +73,6 @@ th , td {
 
 tr td {
   padding: 10px, 10px, 10px, 10px;
-  
 
 }
 

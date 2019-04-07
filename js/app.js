@@ -73,9 +73,9 @@ function addTableToDOM(){
 function generateStoreData() {
   var oldMill = new CookieShopLocation('Old Mill', 23, 65, 6.3);
   var pilotButte = new CookieShopLocation('Pilot Butte', 11, 38, 3.7);
-  var schwabAphitheater = new CookieShopLocation('Schwab Aphitheater', 20, 38, 2.3);
-  var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
-  var drakePark = new CookieShopLocation('Drake Park', 3, 24, 1.2);
+  // var schwabAphitheater = new CookieShopLocation('Schwab Aphitheater', 20, 38, 2.3);
+  // var towerTheater = new CookieShopLocation('Tower Theater', 2, 16, 4.6);
+  // var drakePark = new CookieShopLocation('Drake Park', 3, 24, 1.2);
 
 }
 var addCookieShopEventHandler = function(event){
