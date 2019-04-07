@@ -25,14 +25,14 @@
                 Cookie Shop Sales Information
               </legend>
               <label for="name">Shop Name</label>
-              <input type="text" name="name" required><br>
+              <input type="text" name="name" placeholder = "Shop Name" required><br>
 
               <label for="minHourlyCustomers">Minimum Number of Customers per day</label>
-              <input type="number" name="minHourlyCustomers" required><br>
+              <input type="number" min=0 name="minHourlyCustomers" placeholder=0 required><br>
               <label for="maxHourlyCustomers">Maximum Number of Customers per day</label>
-              <input type="number" name="maxHourlyCustomers" required><br>git 
+              <input type="number" min=0 placeholder=0 name="maxHourlyCustomers" required><br>git 
               <label for="averageHourlyCookieSale">Average Cookies sold per hour</label>
-              <input type="number" name="averageHourlyCookieSale" required>
+              <input type="number" min=0 placeholder=0 name="averageHourlyCookieSale" required>
             </fieldset>
             <button type = "submit">Submit</button>
           </form>
