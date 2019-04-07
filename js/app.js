@@ -10,6 +10,7 @@ var allShopsHourlyTotal = [];
 var companyDailyTotal = 0;
 var companyHourlyTotal = 0;
 var addNewCookieStore = document.getElementById('addCookieShopForm');
+var container = document.getElementById('container');
 
 // DEFINE ALL GLOBAL FUNCTIONS
 
@@ -166,4 +167,4 @@ CookieShopLocation.prototype.render = renderShop;
 
 renderTable(); // Entry Point
 
-addNewCookieStore.addCookieShopEventListener('submit', addCookieShopEventHandler);
+container.addEventListener('submit', addCookieShopEventHandler);
